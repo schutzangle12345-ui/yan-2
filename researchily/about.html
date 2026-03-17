@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Researchily | yan-2 AI for R&D Teams</title>
+    <meta name="description" content="Learn the story behind Researchily (yan-2), our mission to solve the hallucination problem in R&D, and our values in scientific precision.">
+    <style>
+        :root {
+            --color-primary: #1e293b;
+            --color-primary-dark: #0f172a;
+            --color-accent: #2563eb;
+            --color-background: #f8fafc;
+            --color-surface: #ffffff;
+            --color-text: #1e293b;
+            --color-text-muted: #64748b;
+            --color-border: #e2e8f0;
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --container-max: 1100px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s ease;
+        }
+
+        /* Navigation */
+        header {
+            background-color: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .cta-btn {
+            background-color: var(--color-primary);
+            color: white !important;
+            padding: 0.6rem 1.25rem;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--color-primary-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 1.5rem;
+            text-align: center;
+            background-color: var(--color-surface);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--color-primary-dark);
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--color-text-muted);
+            line-height: 1.8;
+        }
+
+        /* Content Sections */
+        .section {
+            padding: 5rem 1.5rem;
+            max-width: var(--container-max);
+            margin: 0 auto;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .content-label {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        h2 {
+            font-size: 2.25rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-primary-dark);
+        }
+
+        .lead-text {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Value Grid */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background: var(--color-surface);
+            padding: 2.5rem;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+        }
+
+        .value-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .value-card p {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+        }
+
+        /* CTA Section */
+        .cta-bottom {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 6rem 1.5rem;
+            text-align: center;
+        }
+
+        .cta-bottom h2 {
+            color: white;
+        }
+
+        .cta-bottom p {
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            font-size: 1.25rem;
+        }
+
+        .white-btn {
+            background-color: white;
+            color: var(--color-primary);
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--color-surface);
+            padding: 4rem 1.5rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .footer-container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+        }
+
+        .footer-bottom {
+            max-width: var(--container-max);
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-border);
+            display: flex;
+            justify-content: space-between;
+            color: var(--color-text-muted);
+            font-size: 0.875rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-icons svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--color-text-muted);
+        }
+
+        @media (max-width: 768px) {
+            .grid-2, .values-grid, .footer-container {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <span style="font-weight:700;font-size:1.25rem">yan-2</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="auth.html">Sign In</a>
+                <a href="auth.html" class="cta-btn">Start Researching</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <span class="content-label">Our Mission</span>
+                <h1>Empowering the next generation of breakthroughs.</h1>
+                <p>Researchily was built to solve the fundamental gap between massive technical literature and actionable experimental design.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="grid-2">
+                <div>
+                    <span class="content-label">The Problem</span>
+                    <h2>Why we started</h2>
+                    <p class="lead-text">Research and Development is the engine of progress, yet the tools R&D teams use have remained stuck in the past. Researchers are drowning in technical content, spending long nights skimming through literature instead of innovating.</p>
+                    <p>We saw three critical failures in the market: generic chatbots that hallucinate on scientific data, a massive delay in project milestones due to manual literature reviews, and a fragmented workflow where summaries never quite connect to experiment plans. We built yan-2 to solve this.</p>
+                </div>
+                <div style="background: #eef2f6; border-radius: 12px; height: 350px; display: flex; align-items: center; justify-content: center; color: var(--color-text-muted); padding: 3rem; font-style: italic;">
+                    "Our goal is to ensure no researcher ever has to waste budget on a misdirected experiment caused by hallucinated AI data."
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="background-color: #f1f5f9; border-radius: 20px;">
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <span class="content-label">Our Values</span>
+                <h2>Built for Precision</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <h3>Scientific Integrity</h3>
+                        <p>We prioritize accuracy and citations above all. Our models are tuned to say "I don't know" rather than guess on technical data.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>IP Protection</h3>
+                        <p>We understand the value of your innovation. We offer robust security and data options to keep your confidential research private.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>Actionable Insights</h3>
+                        <p>Research is only valuable if it leads to results. We bridge the gap between literature reviews and practical experiment mapping.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="grid-2">
+                <div style="order: 2;">
+                    <span class="content-label">The Team</span>
+                    <h2>Dedicated to Innovation Labs</h2>
+                    <p class="lead-text">Researchily (yan-2) was designed for CTOs, R&D managers, and product development teams across industries—from pharmaceuticals and materials science to electronics and hardware.</p>
+                    <p>By integrating yan-2 into your research pipeline, you're not just buying a tool; you're adopting a change-management playbook for safer, faster, and more effective R&D. We help you identify white spaces and unmet needs with the speed that 2025's market demands.</p>
+                </div>
+                <div style="order: 1; border-left: 4px solid var(--color-accent); padding-left: 2rem;">
+                    <h4 style="margin-bottom: 1rem; color: var(--color-primary-dark);">Who we serve:</h4>
+                    <ul style="list-style: none; color: var(--color-text-muted);">
+                        <li style="margin-bottom: 0.5rem;">• Pharmaceutical Lead Researchers</li>
+                        <li style="margin-bottom: 0.5rem;">• Materials Science Engineers</li>
+                        <li style="margin-bottom: 0.5rem;">• Electronics & Hardware Innovation Labs</li>
+                        <li style="margin-bottom: 0.5rem;">• Food & Beverage Product Developers</li>
+                        <li style="margin-bottom: 0.5rem;">• Beauty & Personal Care R&D Managers</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-bottom">
+            <div style="max-width: 700px; margin: 0 auto;">
+                <h2>Elevate your research pipeline</h2>
+                <p>Join the innovation labs and product teams using Researchily to design better experiments and avoid reinventing the wheel.</p>
+                <a href="auth.html" class="white-btn">Get Started with yan-2</a>
+                <div style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">
+                    Questions about IP? Contact us at: <strong>support@test.test</strong>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div>
+                <a href="index.html" class="footer-logo">
+                    <span style="font-weight:700;font-size:1.25rem">yan-2</span>
+                </a>
+                <p style="color: var(--color-text-muted); font-size: 0.9rem; max-width: 250px;">
+                    Specialized AI chat for R&D teams. Literature reviews, patent searches, and experiment planning in one secure workspace.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h4>Platform</h4>
+                <ul>
+                    <li><a href="index.html">Product Overview</a></li>
+                    <li><a href="auth.html">Pricing Plans</a></li>
+                    <li><a href="auth.html">Sign In</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="mailto:support@test.test">Contact Support</a></li>
+                    <li><a href="#">Security & IP</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2026 yan-2. All rights reserved.</div>
+            <div class="social-icons">
+                <a href="#" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="#" aria-label="Twitter">
+                    <svg viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
