@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In / Sign Up | Researchily - AI for R&D</title>
+    <style>
+        :root {
+            --color-primary: #1e3a8a;
+            --color-primary-dark: #172554;
+            --color-background: #f8fafc;
+            --color-surface: #ffffff;
+            --color-text: #0f172a;
+            --color-text-muted: #64748b;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --border-radius: 6px;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation */
+        header {
+            background-color: var(--color-surface);
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header a {
+            text-decoration: none;
+            color: var(--color-text);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--color-text-muted);
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .cta-button {
+            background-color: var(--color-primary);
+            color: white !important;
+            padding: 0.6rem 1.25rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+        }
+
+        /* Main Auth Layout */
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .auth-card {
+            background: var(--color-surface);
+            width: 100%;
+            max-width: 480px;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border: 1px solid #e2e8f0;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .auth-header .logo {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--color-primary);
+        }
+
+        .auth-header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        /* Tabs System */
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #f1f5f9;
+            margin-bottom: 2rem;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 0.75rem;
+            background: none;
+            border: none;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+        }
+
+        .tab-btn.active {
+            color: var(--color-primary);
+            border-bottom-color: var(--color-primary);
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        /* Form Styling */
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--color-text);
+        }
+
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cbd5e1;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 1rem;
+        }
+
+        button[type="submit"]:hover {
+            background-color: var(--color-primary-dark);
+        }
+
+        button[type="submit"]:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--color-surface);
+            border-top: 1px solid #e2e8f0;
+            padding: 3rem 2rem;
+            margin-top: auto;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .footer-brand p {
+            color: var(--color-text-muted);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: flex-end;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--color-text-muted);
+            font-size: 0.875rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            justify-content: flex-end;
+        }
+
+        .social-icons svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--color-text-muted);
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-links, .social-icons {
+                justify-content: center;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html"><span style="font-weight:700;font-size:1.25rem">yan-2</span></a>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="auth.html" class="cta-button">Sign In</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="auth-card">
+            <div class="auth-header">
+                <a href="index.html" class="logo"><span style="font-weight:700;font-size:1.25rem">yan-2</span></a>
+                <h1>Accelerate your R&D</h1>
+            </div>
+
+            <div class="tabs">
+                <button class="tab-btn" onclick="switchTab('signin')">Sign In</button>
+                <button class="tab-btn active" onclick="switchTab('signup')">Sign Up</button>
+            </div>
+
+            <!-- Sign Up Tab -->
+            <div id="signup-pane" class="tab-pane active">
+                <form data-backend="signup">
+                    <input type="hidden" name="role" value="user">
+                    <div class="form-group">
+                        <label for="signup-email">Professional Email</label>
+                        <input type="email" id="signup-email" name="email" required placeholder="name@company.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" name="password" minlength="6" required placeholder="Minimum 6 characters">
+                    </div>
+                    <button type="submit">Create Research Account</button>
+                    <p data-success style="display:none; color: #15803d; font-weight: 600; margin-top: 1.5rem; text-align: center; background: #f0fdf4; padding: 0.75rem; border-radius: 4px;">
+                        Registration successful! Please login.
+                    </p>
+                </form>
+            </div>
+
+            <!-- Sign In Tab -->
+            <div id="signin-pane" class="tab-pane">
+                <form onsubmit="return false;">
+                    <div class="form-group">
+                        <label for="signin-email">Email Address</label>
+                        <input type="email" id="signin-email" placeholder="name@company.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="signin-password">Password</label>
+                        <input type="password" id="signin-password" placeholder="••••••••">
+                    </div>
+                    <button type="submit">Sign In</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <span style="font-weight:700;font-size:1.25rem">yan-2</span>
+                <p>© 2026 Researchily. Professional AI for Innovation Teams.</p>
+            </div>
+            <div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="auth.html">Sign In</a>
+                </div>
+                <div class="social-icons">
+                    <a href="#" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Twitter">
+                        <svg viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(tab) {
+            const panes = document.querySelectorAll('.tab-pane');
+            const buttons = document.querySelectorAll('.tab-btn');
+            
+            panes.forEach(p => p.classList.remove('active'));
+            buttons.forEach(b => b.classList.remove('active'));
+
+            if (tab === 'signin') {
+                document.getElementById('signin-pane').classList.add('active');
+                buttons[0].classList.add('active');
+            } else {
+                document.getElementById('signup-pane').classList.add('active');
+                buttons[1].classList.add('active');
+            }
+        }
+
+        // Logic to monitor success message and auto-switch
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                    const successMsg = mutation.target;
+                    if (successMsg.style.display === 'block') {
+                        setTimeout(() => {
+                            switchTab('signin');
+                            // Optional: pre-fill email if desired, but keeping it clean
+                        }, 2000);
+                    }
+                }
+            });
+        });
+
+        const successEl = document.querySelector('[data-success]');
+        if (successEl) {
+            observer.observe(successEl, { attributes: true });
+        }
+    </script>
+
+    <!-- Backend Integration Script -->
+    <script>
+    (function() {
+      var BACKEND = 'http://localhost:3000/api';
+      var TOKEN = '38f6969eec320314b3a80e0bcece1c31e4c92eec2f2a852270be120962f1733c';
+      var DOMAIN = 'researchily.com';
+      var HEADERS = { 'Content-Type': 'application/json', 'X-Token': TOKEN, 'X-Domain': DOMAIN };
+
+      // 3. Handle signup only
+      document.addEventListener('submit', function(e) {
+        var form = e.target.closest('form[data-backend="signup"]');
+        if (!form) return;
+        e.preventDefault();
+        
+        var data = {};
+        new FormData(form).forEach(function(v, k) { data[k] = v; });
+
+        var btn = form.querySelector('button[type="submit"]');
+        var originalText = '';
+        if (btn) {
+          originalText = btn.innerText;
+          btn.innerText = 'Sending...';
+          btn.disabled = true;
+        }
+
+
+        fetch(BACKEND + '/users', {
+          method: 'POST',
+          headers: HEADERS,
+          body: JSON.stringify(data)
+        }).then(function(r) { return r.json(); }).then(function(res) {
+          if (res.success) {
+            var msg = form.querySelector('[data-success]');
+            if (msg) { msg.style.display = 'block'; }
+            form.reset();
+            if (btn) btn.style.display = 'none';
+          } else {
+            alert(res.error || 'Failed to sign up');
+            if (btn) { btn.innerText = originalText; btn.disabled = false; }
+          }
+        }).catch(function(){
+          alert('Network error occurred');
+          if (btn) { btn.innerText = originalText; btn.disabled = false; }
+        });
+      });
+    })();
+    </script>
+</body>
+</html>
